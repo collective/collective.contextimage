@@ -1,0 +1,14 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:five="http://namespaces.zope.org/five">
+
+  <include package="archetypes.schemaextender" />
+  <include file="profile.zcml" />
+  <include package=".browser" />
+  
+  <adapter
+    name="collective.contextimage"
+    factory=".extender.ContextImageExtender"
+    provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender"
+  />
+
+</configure>
