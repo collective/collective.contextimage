@@ -9,7 +9,7 @@ CSS_TEMPLATE = """
 }
 """
 
-class ContextImageViewlet(ViewletBase, RequestTool):
+class ContextImageViewlet(ViewletBase):
     
     @property
     def imageurl(self):
