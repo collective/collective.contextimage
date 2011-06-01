@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = "0.9dev"
+version = "0.1"
 
 setup(name='collective.contextimage',
       version=version,
