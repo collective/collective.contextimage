@@ -3,7 +3,7 @@
 
   <browser:viewlet
     name="collective.contextimage"
-    manager="zope.viewlet.interfaces.IViewletManager"
+    manager="plone.app.layout.viewlets.interfaces.IAboveContent"
     permission="zope2.View"
     class=".viewlet.ContextImageViewlet"
 	template="viewlet.pt"
