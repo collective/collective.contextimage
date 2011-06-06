@@ -1,6 +1,6 @@
+<?xml version="1.0"?>
 <layers>
- <layer
-     name="collective.contextimage"
-     interface="collective.contextimage.interfaces.IContextImageExtensionLayer"
- />
+  <layer
+    name="collective.contextimage"
+    interface="collective.contextimage.interfaces.IContextImageExtensionLayer"/>
 </layers>

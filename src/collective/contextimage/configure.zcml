@@ -6,8 +6,8 @@
   <include package=".browser" />
   
   <adapter
-    name="collective.contextimage"
-    factory=".extender.ContextImageExtender"
+    name="collective.viewletcontextimage"
+    factory=".extender.ViewletContextImageExtender"
     provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender"
   />
 

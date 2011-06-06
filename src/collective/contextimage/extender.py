@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from zope.interface import implements
 from zope.component import adapts
 from archetypes.schemaextender.interfaces import (
@@ -13,10 +12,12 @@ from Products.Archetypes.public import (
 from Products.Archetypes.interfaces import IBaseObject
 from collective.contextimage.interfaces import IContextImageExtensionLayer
 
+
 class XImageField(ExtensionField, ImageField): pass
 
-class ContextImageExtender(object):
-    """Schema extender for context specific images.
+
+class ViewletContextImageExtender(object):
+    """Schema extender for context specific images displayed in a viewlet.
     """
     
     implements(IOrderableSchemaExtender, IBrowserLayerAwareExtender)
@@ -26,7 +27,7 @@ class ContextImageExtender(object):
 
     fields = [
         XImageField(
-            name='contextimage',
+            name='viewlet_context_image',
             schemata='Context Image',
         ),
     ]
