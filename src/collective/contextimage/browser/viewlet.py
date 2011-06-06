@@ -13,7 +13,10 @@ class ContextImageViewlet(ViewletBase):
                   'alt="Context specific Image" />'
         default = default % self.context.absolute_url()
         while not IPloneSiteRoot.providedBy(obj):
-            field = obj.getField('viewlet_context_image')
+            try:
+                field = obj.getField('viewlet_context_image')
+            except AttributeError, e:
+                return default
             if field is None:
                 obj = aq_parent(aq_inner(obj))
                 continue
