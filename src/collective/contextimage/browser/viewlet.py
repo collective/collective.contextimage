@@ -9,7 +9,7 @@ class ContextImageViewlet(ViewletBase):
     def image(self):
         obj = aq_inner(self.context)
         image = None
-        default = '<img src="%s/vielwet_context_image_default.png" ' + \
+        default = '<img src="%s/viewlet_context_image_default.png" ' + \
                   'alt="Context specific Image" />'
         default = default % self.context.absolute_url()
         while not IPloneSiteRoot.providedBy(obj):
