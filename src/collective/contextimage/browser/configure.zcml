@@ -6,8 +6,17 @@
     manager="plone.app.layout.viewlets.interfaces.IAboveContent"
     permission="zope2.View"
     class=".viewlet.ContextImageViewlet"
-	template="viewlet.pt"
+	template="context_viewlet.pt"
 	layer="collective.contextimage.interfaces.IContextImageExtensionLayer"
+  />
+  
+  <browser:viewlet
+    name="collective.contextimage"
+    manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
+    permission="zope2.View"
+    class=".viewlet.HeaderImageViewlet"
+    template="header_viewlet.pt"
+    layer="collective.contextimage.interfaces.IContextImageExtensionLayer"
   />
 
 </configure>
