@@ -3,11 +3,11 @@
 
   <browser:viewlet
     name="collective.contextimage"
-    manager="plone.app.layout.viewlets.interfaces.IAboveContent"
+    manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
     permission="zope2.View"
-    class=".viewlet.ContextImageViewlet"
-	template="context_viewlet.pt"
-	layer="collective.contextimage.interfaces.IContextImageExtensionLayer"
+    class=".viewlet.PageImageViewlet"
+    template="css_viewlet.pt"
+    layer="collective.contextimage.interfaces.IPageImageExtensionLayer"
   />
   
   <browser:viewlet
@@ -15,8 +15,17 @@
     manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
     permission="zope2.View"
     class=".viewlet.HeaderImageViewlet"
-    template="header_viewlet.pt"
-    layer="collective.contextimage.interfaces.IContextImageExtensionLayer"
+    template="css_viewlet.pt"
+    layer="collective.contextimage.interfaces.IHeaderImageExtensionLayer"
+  />
+  
+  <browser:viewlet
+    name="collective.contextimage"
+    manager="plone.app.layout.viewlets.interfaces.IAboveContent"
+    permission="zope2.View"
+    class=".viewlet.ContextImageViewlet"
+	template="context_viewlet.pt"
+	layer="collective.contextimage.interfaces.IViewletImageExtensionLayer"
   />
 
 </configure>

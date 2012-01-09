@@ -6,7 +6,31 @@
   <genericsetup:registerProfile
       name="default"
       title="collective.contextimage"
-      directory="profile"
+      directory="profile/default"
+      description="Extension profile for collective.contextimage."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+  />
+  
+  <genericsetup:registerProfile
+      name="page"
+      title="collective.contextimage.page"
+      directory="profile/page"
+      description="Extension profile for collective.contextimage."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+  />
+  
+  <genericsetup:registerProfile
+      name="header"
+      title="collective.contextimage.header"
+      directory="profile/header"
+      description="Extension profile for collective.contextimage."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+  />
+  
+  <genericsetup:registerProfile
+      name="viewlet"
+      title="collective.contextimage.viewlet"
+      directory="profile/viewlet"
       description="Extension profile for collective.contextimage."
       provides="Products.GenericSetup.interfaces.EXTENSION"
   />

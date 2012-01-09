@@ -6,6 +6,18 @@
   <include package=".browser" />
   
   <adapter
+    name="collective.pagecontextimage"
+    factory=".extender.PageContextImageExtender"
+    provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender"
+  />
+  
+  <adapter
+    name="collective.headercontextimage"
+    factory=".extender.HeaderContextImageExtender"
+    provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender"
+  />
+  
+  <adapter
     name="collective.viewletcontextimage"
     factory=".extender.ViewletContextImageExtender"
     provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender"
