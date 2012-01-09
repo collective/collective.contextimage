@@ -67,8 +67,14 @@ PAGE_DEFAULT_IMAGE = '++resource++collective.contextimage.images/default_page.pn
 
 class PageImageViewlet(CSSViewlet):
     image_field_name = 'page_context_image'
-    default_imageurl = PAGE_DEFAULT_IMAGE
-    default_css_template = PAGE_CSS_TEMPLATE
+    
+    @property
+    def default_imageurl(self):
+        return PAGE_DEFAULT_IMAGE
+    
+    @property
+    def default_css_template(self):
+        return PAGE_CSS_TEMPLATE
 
 
 HEADER_CSS_TEMPLATE = """
@@ -82,8 +88,14 @@ HEADER_DEFAULT_IMAGE = '++resource++collective.contextimage.images/default.png'
 
 class HeaderImageViewlet(CSSViewlet):
     image_field_name = 'header_context_image'
-    default_imageurl = HEADER_DEFAULT_IMAGE
-    default_css_template = HEADER_CSS_TEMPLATE
+    
+    @property
+    def default_imageurl(self):
+        return HEADER_DEFAULT_IMAGE
+    
+    @property
+    def default_css_template(self):
+        return HEADER_CSS_TEMPLATE
 
 
 class ContextImageViewlet(ImageViewlet):
