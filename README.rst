@@ -9,20 +9,20 @@ renderers:
 
 *Viewlet context image*
     An image which gets rendered by a viewlet as ``img`` tag. Profile is
-    ```profile-collective.contextimage:viewlet```.
+    ``profile-collective.contextimage:viewlet``.
 
 *Header context image*
     An image which gets rendered as portal header background. Profile is
-    ```profile-collective.contextimage:header```.
+    ``profile-collective.contextimage:header``.
 
 *Page context image*
     An image which gets rendered as page background. Profile is
-    ```profile-collective.contextimage:page```.
+    ``profile-collective.contextimage:page``.
 
 *Logo context image*
     An image which gets rendered as portal logo. This is a drop in replacement
     for the logo viewlet with fallback to default logo). Profile is
-    ```profile-collective.contextimage:logo```.
+    ``profile-collective.contextimage:logo``.
 
 
 Installation
@@ -63,7 +63,7 @@ The code is located in the
 You can clone it or `get access to the github-collective
 <http://collective.github.com/>`_ and work directly on the project.
 
-Maintainer is Robert NIederreiter and the BlueDynamics Alliance developer team.
+Maintainer is Robert Niederreiter and the BlueDynamics Alliance developer team.
 We appreciate any contribution and if a release is needed to be done on pypi,
 please just contact one of us
 `dev@bluedynamics dot com <mailto:dev@bluedynamics.com>`_
