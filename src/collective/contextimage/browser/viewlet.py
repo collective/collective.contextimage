@@ -1,17 +1,19 @@
 # -*- coding: utf-8 -*-
 import logging
-from plone.app.layout.viewlets.common import ViewletBase
+from plone.app.layout.viewlets.common import (
+    ViewletBase,
+    LogoViewlet,
+)
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Acquisition import aq_inner, aq_parent
 
 logger = logging.getLogger('collective.contextimage')
 
-
-class ImageViewlet(ViewletBase):
-    
+class ContextImageBase(object):
+    """Abstract Base for Context Images"""
     image_field_name = None
     default_imageurl = None
-    
+
     def aquire_context_image(self):
         obj = aq_inner(self.context)
         image = None
@@ -29,7 +31,7 @@ class ImageViewlet(ViewletBase):
             else:
                 break
         return image
-    
+
     @property
     def imageurl(self):
         image = self.aquire_context_image()
@@ -39,10 +41,14 @@ class ImageViewlet(ViewletBase):
         return image.absolute_url()
 
 
+class ImageViewlet(ContextImageBase, ViewletBase):
+    """Base Viewlet for Context Images"""
+
+
 class CSSViewlet(ImageViewlet):
-    
-    default_css_template = None 
-    
+
+    default_css_template = None
+
     @property
     def css(self):
         try:
@@ -67,11 +73,11 @@ PAGE_DEFAULT_IMAGE = '++resource++collective.contextimage.images/default_page.pn
 
 class PageImageViewlet(CSSViewlet):
     image_field_name = 'page_context_image'
-    
+
     @property
     def default_imageurl(self):
         return PAGE_DEFAULT_IMAGE
-    
+
     @property
     def default_css_template(self):
         return PAGE_CSS_TEMPLATE
@@ -88,18 +94,18 @@ HEADER_DEFAULT_IMAGE = '++resource++collective.contextimage.images/default.png'
 
 class HeaderImageViewlet(CSSViewlet):
     image_field_name = 'header_context_image'
-    
+
     @property
     def default_imageurl(self):
         return HEADER_DEFAULT_IMAGE
-    
+
     @property
     def default_css_template(self):
         return HEADER_CSS_TEMPLATE
 
 
 class ContextImageViewlet(ImageViewlet):
-    
+
     @property
     def image(self):
         default = '<img src="%s/viewlet_context_image_default.png" ' + \
@@ -113,3 +119,14 @@ class ContextImageViewlet(ImageViewlet):
         except Exception, e:
             logger.error(str(e))
             return default
+
+
+class ContextLogoViewlet(ContextImageBase, LogoViewlet):
+    image_field_name = 'logo_context_image'
+
+    def update(self):
+        super(ContextLogoViewlet, self).update()
+        image = self.aquire_context_image()
+        if image:
+            logoTitle = self.portal_state.portal_title()
+            self.logo_tag = image.tag(title=logoTitle, alt=logoTitle)

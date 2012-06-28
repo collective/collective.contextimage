@@ -2,7 +2,7 @@
            xmlns:five="http://namespaces.zope.org/five">
 
   <include package="archetypes.schemaextender" />
-  <include file="profile.zcml" />
+  <include file="profiles.zcml" />
   <include package=".browser" />
   
   <adapter
@@ -20,6 +20,12 @@
   <adapter
     name="collective.viewletcontextimage"
     factory=".extender.ViewletContextImageExtender"
+    provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender"
+  />
+
+  <adapter
+    name="collective.logocontextimage"
+    factory=".extender.LogoContextImageExtender"
     provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender"
   />
 

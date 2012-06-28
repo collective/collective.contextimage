@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<layers>
+  <layer
+    name="collective.contextimage.logo"
+    interface="collective.contextimage.interfaces.ILogoImageExtensionLayer"/>
+</layers>

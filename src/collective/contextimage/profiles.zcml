@@ -1,0 +1,46 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:genericsetup="http://namespaces.zope.org/genericsetup">
+
+  <include package="Products.GenericSetup" file="meta.zcml" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="collective.contextimage"
+      directory="profiles/default"
+      description="Never install that one, use one of the features."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+  />
+  
+  <genericsetup:registerProfile
+      name="page"
+      title="collective.contextimage: Page"
+      directory="profiles/page"
+      description="Context image which gets rendered as portal header background. "
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+  />
+  
+  <genericsetup:registerProfile
+      name="header"
+      title="collective.contextimage: Header"
+      directory="profiles/header"
+      description="Context image which gets rendered as portal header background."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+  />
+  
+  <genericsetup:registerProfile
+      name="viewlet"
+      title="collective.contextimage: Viewlet"
+      directory="profiles/viewlet"
+      description="Context image which gets rendered by a viewlet as img-tag."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+  />
+
+  <genericsetup:registerProfile
+      name="logo"
+      title="collective.contextimage: Logo"
+      directory="profiles/logo"
+      description="Context image rendered as portal logo as drop in replacement."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+  />
+
+</configure>

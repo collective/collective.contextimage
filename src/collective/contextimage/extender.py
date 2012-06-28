@@ -16,6 +16,7 @@ from collective.contextimage.interfaces import (
     IPageImageExtensionLayer,
     IHeaderImageExtensionLayer,
     IViewletImageExtensionLayer,
+    ILogoImageExtensionLayer,
 )
 
 _ = MessageFactory('collective.contextimage')
@@ -95,6 +96,22 @@ class ViewletContextImageExtender(ExtenderBase):
             schemata='Context Image',
             widget=ImageWidget(
                 label=_(u'label_viewlet_context_image', u'Viewlet Image'),
+            )
+        ),
+    ]
+
+class LogoContextImageExtender(ExtenderBase):
+    """Schema extender for context specific images displayed as logo.
+    """
+
+    layer = ILogoImageExtensionLayer
+
+    fields = [
+        XImageField(
+            name='logo_context_image',
+            schemata='Logo Image',
+            widget=ImageWidget(
+                label=_(u'label_viewlet_logo_image', u'Logo Image'),
             )
         ),
     ]

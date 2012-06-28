@@ -27,5 +27,14 @@
 	template="context_viewlet.pt"
 	layer="collective.contextimage.interfaces.IViewletImageExtensionLayer"
   />
+  
+  <browser:viewlet
+    name="plone.logo"
+    manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+    permission="zope2.View"
+    class=".viewlet.ContextLogoViewlet"
+    template="logo.pt"
+    layer="collective.contextimage.interfaces.ILogoImageExtensionLayer"
+  />
 
 </configure>

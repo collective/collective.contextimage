@@ -13,3 +13,6 @@ class IHeaderImageExtensionLayer(IContextImageExtensionLayer): pass
 
 
 class IViewletImageExtensionLayer(IContextImageExtensionLayer): pass
+
+
+class ILogoImageExtensionLayer(IContextImageExtensionLayer): pass
