@@ -5,7 +5,8 @@ Provide extension fields for context specific images. This images can be used
 as layout elements. If the current context does not provide an image it is 
 aquired from its parents. 
 
-It is useful i.e. 
+It is useful i.e.
+ 
 - if you like to have a different logo or header background on different sections 
   of your site,
 - if you want to set a background image for your content,
