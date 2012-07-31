@@ -2,6 +2,12 @@
 History
 =======
 
+1.0.1
+-----
+
+- released after adding some more documentation
+  [jensens]
+
 0.5
 ---
 
