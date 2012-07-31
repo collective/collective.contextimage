@@ -55,7 +55,7 @@ Source Code and Contributions
 =============================
 
 If you want to help with the development (improvement, update, bug-fixing, ...)
-of ``collective.folderorder`` this is a great idea!
+of ``collective.contextimage`` this is a great idea!
 
 The code is located in the
 `github collective <https://github.com/collective/collective.contextimage>`_.
