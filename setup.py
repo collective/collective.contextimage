@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = "0.5"
+version = "1.0"
 shortdesc = ('Context sensitive images from extended plone content as viewlet, '
              'header, logo, ...')
 longdesc = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()

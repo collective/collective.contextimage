@@ -2,10 +2,19 @@ collective.contextimage
 =======================
 
 Provide extension fields for context specific images. This images can be used
-as layout elements.
+as layout elements. If the current context does not provide an image it is 
+aquired from its parents. 
 
-Currently, three separate schema extenders are provided with corresponsing
-renderers:
+It is useful i.e. 
+- if you like to have a different logo or header background on different sections 
+  of your site,
+- if you want to set a background image for your content,
+- if you want to place an image in context somehwere in the page using a 
+  viewlet.
+
+Separate schema extenders are provided with corresponsing renderers bound to 
+browserlayers loaded by different profiles. This way its possible to enable
+only one of the several features:
 
 *Viewlet context image*
     An image which gets rendered by a viewlet as ``img`` tag. Profile is
