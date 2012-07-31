@@ -10,7 +10,7 @@ longdesc += open(os.path.join(os.path.dirname(__file__), 'LICENSE.rst')).read()
 
 setup(name='collective.contextimage',
       version=version,
-      description=shortdesc
+      description=shortdesc,
       long_description=longdesc,
       classifiers=[
             'Development Status :: 5 - Production/Stable',
