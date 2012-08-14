@@ -2,3 +2,5 @@
 *.pyo
 src/collective.contextimage.egg-info/
 dist/
+
+.DS_Store

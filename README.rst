@@ -61,6 +61,18 @@ following to integration GS profile metadata.xml::
     </metadata>
 
 
+You can also install the profiles by going to /portal_setup.
+
+
+Troubleshoting
+==============
+
+You might get an error if you try to use an image with the same name as one in your theme/skins folder.
+So: If you theme uses an image with name 'logo.png' you might not be able to use 'logo.png' 
+as contextualimage (rename it before you upload it).
+
+
+
 Source Code and Contributions
 =============================
 
