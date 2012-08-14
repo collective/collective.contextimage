@@ -1,0 +1,3 @@
+<div class="contextfooter">
+   <tal:image replace="structure view/footer" />
+</div>

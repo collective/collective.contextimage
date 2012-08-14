@@ -43,4 +43,12 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
   />
 
+  <genericsetup:registerProfile
+      name="footer"
+      title="collective.contextimage: Footer"
+      directory="profiles/footer"
+      description="Context Footer."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+  />
+
 </configure>

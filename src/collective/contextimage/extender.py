@@ -10,6 +10,8 @@ from Products.Archetypes.utils import OrderedDict
 from Products.Archetypes.public import (
     ImageField,
     ImageWidget,
+    TextField,
+    RichWidget,
 )
 from Products.Archetypes.interfaces import IBaseObject
 from collective.contextimage.interfaces import (
@@ -17,6 +19,7 @@ from collective.contextimage.interfaces import (
     IHeaderImageExtensionLayer,
     IViewletImageExtensionLayer,
     ILogoImageExtensionLayer,
+    IFooterExtensionLayer,
 )
 
 _ = MessageFactory('collective.contextimage')
@@ -25,6 +28,8 @@ _ = MessageFactory('collective.contextimage')
 class XImageField(ExtensionField, ImageField):
     pass
 
+class FooterField(ExtensionField, TextField):
+    pass
 
 class ExtenderBase(object):
     
@@ -115,3 +120,20 @@ class LogoContextImageExtender(ExtenderBase):
             )
         ),
     ]
+
+class ContextFooterExtender(ExtenderBase):
+    """Schema extender for context specific footer.
+    """
+
+    layer = IFooterExtensionLayer
+
+    fields = [
+        FooterField(
+            name='context_footer',
+            schemata='Footer',
+            widget=RichWidget(
+                label=_(u'label_viewlet_footer', u'Footer'),
+            )
+        ),
+    ]
+

@@ -37,4 +37,14 @@
     layer="collective.contextimage.interfaces.ILogoImageExtensionLayer"
   />
 
+  <browser:viewlet
+    name="collective.contextimage.footerviewlet"
+    manager="plone.app.layout.viewlets.interfaces.IAboveContent"
+    permission="zope2.View"
+    class=".viewlet.ContextFooterViewlet"
+	template="context_footerviewlet.pt"
+	layer="collective.contextimage.interfaces.IFooterExtensionLayer"
+  />
+
+
 </configure>

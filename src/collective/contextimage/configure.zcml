@@ -29,4 +29,10 @@
     provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender"
   />
 
+  <adapter
+    name="collective.viewletcontextfooter"
+    factory=".extender.ContextFooterExtender"
+    provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender"
+  />  
+
 </configure>
