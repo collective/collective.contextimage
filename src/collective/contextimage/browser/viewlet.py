@@ -49,13 +49,13 @@ class ContextFooterBase(object):
         context_footer = None
         while not IPloneSiteRoot.providedBy(obj):
             try:
-                field = obj.getField(self.context_footer)
+                field = obj.getField(context_footer)
             except AttributeError, e:
                 return
             if field is None:
                 obj = aq_parent(aq_inner(obj))
                 continue
-            footer = field.get(obj)
+            context_footer = field.get(obj)
             if not context_footer:
                 obj = aq_parent(aq_inner(obj))
             else:
@@ -64,10 +64,10 @@ class ContextFooterBase(object):
 
     @property
     def footer(self):
-        footer = self.aquire_footer()
-        if not footer:
+        context_footer = self.aquire_footer()
+        if not context_footer:
             return 'nothing'
-        return 'hallo'
+        return context_footer
 
 
 class ImageViewlet(ContextImageBase, ViewletBase):
@@ -165,6 +165,6 @@ class ContextFooterViewlet(ContextFooterBase):
     
     def update(self):
         super(ContextFooterViewlet, self).update()
-        footer = self.aquire_footer()
-        if footer:
-            return footer
+        context_footer = self.aquire_footer()
+        if context_footer:
+            return context_footer
