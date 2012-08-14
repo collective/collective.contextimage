@@ -41,34 +41,33 @@ class ContextImageBase(object):
         return image.absolute_url()
 
 class ContextFooterBase(object):
-    """Abstract Base for Footer"""
+    """Abstract Base for Context Footer"""
     footer_name = None
     
     def aquire_footer(self):
         obj = aq_inner(self.context)
-        footer = None
+        context_footer = None
         while not IPloneSiteRoot.providedBy(obj):
             try:
-                field = obj.getField(self.footer)
+                field = obj.getField(self.context_footer)
             except AttributeError, e:
                 return
             if field is None:
                 obj = aq_parent(aq_inner(obj))
                 continue
             footer = field.get(obj)
-            if not footer:
+            if not context_footer:
                 obj = aq_parent(aq_inner(obj))
             else:
                 break
-        return footer
+        return context_footer
 
     @property
-    def imageurl(self):
-        image = self.aquire_context_image()
-        if not image:
-            return '%s/%s' % (self.context.absolute_url(),
-                              self.default_imageurl)
-        return image.absolute_url()
+    def footer(self):
+        footer = self.aquire_footer()
+        if not footer:
+            return 'nothing'
+        return 'hallo'
 
 
 class ImageViewlet(ContextImageBase, ViewletBase):
@@ -163,9 +162,9 @@ class ContextLogoViewlet(ContextImageBase, LogoViewlet):
 
 class ContextFooterViewlet(ContextFooterBase):
     field_name = 'context_footer'
-
+    
     def update(self):
         super(ContextFooterViewlet, self).update()
         footer = self.aquire_footer()
         if footer:
-            pass
+            return footer

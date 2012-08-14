@@ -39,7 +39,7 @@
 
   <browser:viewlet
     name="collective.contextimage.footerviewlet"
-    manager="plone.app.layout.viewlets.interfaces.IAboveContent"
+    manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
     permission="zope2.View"
     class=".viewlet.ContextFooterViewlet"
 	template="context_footerviewlet.pt"
