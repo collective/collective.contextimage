@@ -2,10 +2,19 @@
 History
 =======
 
+1.1dev
+------
+
+- All Extender fields in 'settings' schema.
+  [rnix]
+
+- Context footer added
+  [espen]
+
 1.0.1
 -----
 
-- released after adding some more documentation
+- released after adding some more documentation.
   [jensens]
 
 0.5

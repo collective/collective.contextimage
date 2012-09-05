@@ -62,7 +62,7 @@ class PageContextImageExtender(ExtenderBase):
     fields = [
         XImageField(
             name='page_context_image',
-            schemata='Context Image',
+            schemata='settings',
             widget=ImageWidget(
                 label=_(u'label_page_context_image', u'Page Background Image'),
             )
@@ -80,7 +80,7 @@ class HeaderContextImageExtender(ExtenderBase):
     fields = [
         XImageField(
             name='header_context_image',
-            schemata='Context Image',
+            schemata='settings',
             widget=ImageWidget(
                 label=_(u'label_header_context_image',
                         u'Header Background Image'),
@@ -98,12 +98,13 @@ class ViewletContextImageExtender(ExtenderBase):
     fields = [
         XImageField(
             name='viewlet_context_image',
-            schemata='Context Image',
+            schemata='settings',
             widget=ImageWidget(
                 label=_(u'label_viewlet_context_image', u'Viewlet Image'),
             )
         ),
     ]
+
 
 class LogoContextImageExtender(ExtenderBase):
     """Schema extender for context specific images displayed as logo.
@@ -114,12 +115,13 @@ class LogoContextImageExtender(ExtenderBase):
     fields = [
         XImageField(
             name='logo_context_image',
-            schemata='Logo Image',
+            schemata='settings',
             widget=ImageWidget(
                 label=_(u'label_viewlet_logo_image', u'Logo Image'),
             )
         ),
     ]
+
 
 class ContextFooterExtender(ExtenderBase):
     """Schema extender for context specific footer.
@@ -130,10 +132,9 @@ class ContextFooterExtender(ExtenderBase):
     fields = [
         FooterField(
             name='context_footer',
-            schemata='Footer',
+            schemata='settings',
             widget=RichWidget(
                 label=_(u'label_viewlet_footer', u'Footer'),
             )
         ),
     ]
-

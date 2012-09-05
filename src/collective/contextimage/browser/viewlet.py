@@ -9,6 +9,7 @@ from Acquisition import aq_inner, aq_parent
 
 logger = logging.getLogger('collective.contextimage')
 
+
 class ContextImageBase(object):
     """Abstract Base for Context Images"""
     image_field_name = None
@@ -39,6 +40,7 @@ class ContextImageBase(object):
             return '%s/%s' % (self.context.absolute_url(),
                               self.default_imageurl)
         return image.absolute_url()
+
 
 class ContextFooterBase(object):
     """Abstract Base for Context Footer"""
@@ -159,6 +161,7 @@ class ContextLogoViewlet(ContextImageBase, LogoViewlet):
         if image:
             logoTitle = self.portal_state.portal_title()
             self.logo_tag = image.tag(title=logoTitle, alt=logoTitle)
+
 
 class ContextFooterViewlet(ContextFooterBase):
     field_name = 'context_footer'
