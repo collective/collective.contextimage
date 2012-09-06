@@ -2,8 +2,8 @@
 History
 =======
 
-1.1dev
-------
+1.1
+---
 
 - All Extender fields in 'settings' schema.
   [rnix]
