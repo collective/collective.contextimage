@@ -15,7 +15,7 @@ class ContextField(object):
     """
     field_name = None
     
-    def aquire_field(self):
+    def acquire_field(self):
         obj = aq_inner(self.context)
         field = None
         while not IPloneSiteRoot.providedBy(obj):
@@ -41,7 +41,7 @@ class ContextImageBase(ContextField):
 
     @property
     def imageurl(self):
-        image = self.aquire_field()
+        image = self.acquire_field()
         if not image:
             return '%s/%s' % (self.context.absolute_url(),
                               self.default_imageurl)
@@ -118,7 +118,7 @@ class ContextImageViewlet(ImageViewlet):
         default = '<img src="%s/viewlet_context_image_default.png" ' + \
                   'alt="Context specific Image" />'
         default = default % self.context.absolute_url()
-        image = self.aquire_field()
+        image = self.acquire_field()
         if not image:
             return default
         try:
@@ -133,7 +133,7 @@ class ContextLogoViewlet(ContextImageBase, LogoViewlet):
 
     def update(self):
         super(ContextLogoViewlet, self).update()
-        image = self.aquire_context_image()
+        image = self.acquire_field()
         if image:
             logoTitle = self.portal_state.portal_title()
             self.logo_tag = image.tag(title=logoTitle, alt=logoTitle)
@@ -144,7 +144,7 @@ class ContextFooterViewlet(ContextField, ViewletBase):
     
     @property
     def footer(self):
-        context_footer = self.aquire_field()
+        context_footer = self.acquire_field()
         if not context_footer:
             return 'nothing'
         return context_footer
