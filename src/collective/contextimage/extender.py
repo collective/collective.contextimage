@@ -128,6 +128,7 @@ class ContextFooterExtender(ExtenderBase):
     fields = [
         XTextField(
             name='context_footer',
+            default_output_type='text/html',
             schemata='settings',
             widget=RichWidget(
                 label=_(u'label_viewlet_footer', u'Footer'),
