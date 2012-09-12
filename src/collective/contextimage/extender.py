@@ -29,7 +29,7 @@ class XImageField(ExtensionField, ImageField):
     pass
 
 
-class FooterField(ExtensionField, TextField):
+class XTextField(ExtensionField, TextField):
     pass
 
 
@@ -126,7 +126,7 @@ class ContextFooterExtender(ExtenderBase):
     layer = IFooterExtensionLayer
 
     fields = [
-        FooterField(
+        XTextField(
             name='context_footer',
             schemata='settings',
             widget=RichWidget(
