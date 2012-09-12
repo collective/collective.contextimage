@@ -9,6 +9,10 @@ History
   [rnix]
 
 - Add documentation for footer viewlet.
+  [rnix]
+
+- CSS viewlets can define ``media``.
+  [rnix]
 
 1.1
 ---

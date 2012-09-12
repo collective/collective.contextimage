@@ -55,6 +55,7 @@ class ImageViewlet(ContextImageBase, ViewletBase):
 
 class CSSViewlet(ImageViewlet):
     default_css_template = None
+    media = 'all'
 
     @property
     def css(self):

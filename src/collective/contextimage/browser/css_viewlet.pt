@@ -1,4 +1,5 @@
 <style type="text/css"
        media="all"
+       tal:attributes="media view/media"
        tal:content="view/css">
 </style>
