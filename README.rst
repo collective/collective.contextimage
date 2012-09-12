@@ -1,14 +1,14 @@
 collective.contextimage
 =======================
 
-Provide extension fields for context specific images. This images can be used
-as layout elements. If the current context does not provide an image it is 
-aquired from its parents. 
+Provide extension fields for context specific images and markup. This elements
+can be used as layout elements. If the current context does not provide the
+specific context related field, it is aquired from its parents. 
 
 It is useful i.e.
  
-- if you like to have a different logo or header background on different sections 
-  of your site,
+- if you like to have a different logo or header background on different
+  sections of your site,
 - if you want to set a background image for your content,
 - if you want to place an image in context somehwere in the page using a 
   viewlet.
@@ -33,6 +33,10 @@ only one of the several features:
     An image which gets rendered as portal logo. This is a drop in replacement
     for the logo viewlet with fallback to default logo). Profile is
     ``profile-collective.contextimage:logo``.
+
+*Footer Viewlet*
+    Richtext which can be displayed as portal footer. Profile is
+    ``profile-collective.contextimage:footer``.
 
 
 Installation
@@ -72,7 +76,6 @@ So: If you theme uses an image with name 'logo.png' you might not be able to use
 as contextualimage (rename it before you upload it).
 
 
-
 Source Code and Contributions
 =============================
 
@@ -90,6 +93,7 @@ We appreciate any contribution and if a release is needed to be done on pypi,
 please just contact one of us
 `dev@bluedynamics dot com <mailto:dev@bluedynamics.com>`_
 
+
 Contributors
 ============
 
@@ -97,3 +101,4 @@ Contributors
 
 - Jens W. Klein <jens@bluedynamics.com>
 
+- Espen Moe-Nilssen <espen@medialog.no>

@@ -2,13 +2,21 @@
 History
 =======
 
+1.1.1dev
+--------
+
+- Cleanup viewlets.
+  [rnix]
+
+- Add documentation for footer viewlet.
+
 1.1
 ---
 
 - All Extender fields in 'settings' schema.
   [rnix]
 
-- Context footer added
+- Context footer added.
   [espen]
 
 1.0.1

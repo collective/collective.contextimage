@@ -10,74 +10,50 @@ from Acquisition import aq_inner, aq_parent
 logger = logging.getLogger('collective.contextimage')
 
 
-class ContextImageBase(object):
-    """Abstract Base for Context Images"""
-    image_field_name = None
-    default_imageurl = None
-
-    def aquire_context_image(self):
+class ContextField(object):
+    """Abstract Base for context field acquiring.
+    """
+    field_name = None
+    
+    def aquire_field(self):
         obj = aq_inner(self.context)
-        image = None
+        field = None
         while not IPloneSiteRoot.providedBy(obj):
             try:
-                field = obj.getField(self.image_field_name)
+                field = obj.getField(self.field_name)
             except AttributeError, e:
                 return
             if field is None:
                 obj = aq_parent(aq_inner(obj))
                 continue
-            image = field.get(obj)
-            if not image:
+            field = field.get(obj)
+            if not field:
                 obj = aq_parent(aq_inner(obj))
             else:
                 break
-        return image
+        return field
+
+
+class ContextImageBase(ContextField):
+    """Abstract Base for Context Images.
+    """
+    default_imageurl = None
 
     @property
     def imageurl(self):
-        image = self.aquire_context_image()
+        image = self.aquire_field()
         if not image:
             return '%s/%s' % (self.context.absolute_url(),
                               self.default_imageurl)
         return image.absolute_url()
 
 
-class ContextFooterBase(object):
-    """Abstract Base for Context Footer"""
-    footer_name = None
-    
-    def aquire_footer(self):
-        obj = aq_inner(self.context)
-        context_footer = None
-        while not IPloneSiteRoot.providedBy(obj):
-            try:
-                field = obj.getField(context_footer)
-            except AttributeError, e:
-                return
-            if field is None:
-                obj = aq_parent(aq_inner(obj))
-                continue
-            context_footer = field.get(obj)
-            if not context_footer:
-                obj = aq_parent(aq_inner(obj))
-            else:
-                break
-        return context_footer
-
-    @property
-    def footer(self):
-        context_footer = self.aquire_footer()
-        if not context_footer:
-            return 'nothing'
-        return context_footer
-
-
 class ImageViewlet(ContextImageBase, ViewletBase):
-    """Base Viewlet for Context Images"""
+    """Base Viewlet for Context Images.
+    """
 
 
 class CSSViewlet(ImageViewlet):
-
     default_css_template = None
 
     @property
@@ -103,7 +79,7 @@ PAGE_DEFAULT_IMAGE = '++resource++collective.contextimage.images/default_page.pn
 
 
 class PageImageViewlet(CSSViewlet):
-    image_field_name = 'page_context_image'
+    field_name = 'page_context_image'
 
     @property
     def default_imageurl(self):
@@ -124,7 +100,7 @@ HEADER_DEFAULT_IMAGE = '++resource++collective.contextimage.images/default.png'
 
 
 class HeaderImageViewlet(CSSViewlet):
-    image_field_name = 'header_context_image'
+    field_name = 'header_context_image'
 
     @property
     def default_imageurl(self):
@@ -142,7 +118,7 @@ class ContextImageViewlet(ImageViewlet):
         default = '<img src="%s/viewlet_context_image_default.png" ' + \
                   'alt="Context specific Image" />'
         default = default % self.context.absolute_url()
-        image = self.aquire_context_image()
+        image = self.aquire_field()
         if not image:
             return default
         try:
@@ -153,7 +129,7 @@ class ContextImageViewlet(ImageViewlet):
 
 
 class ContextLogoViewlet(ContextImageBase, LogoViewlet):
-    image_field_name = 'logo_context_image'
+    field_name = 'logo_context_image'
 
     def update(self):
         super(ContextLogoViewlet, self).update()
@@ -163,11 +139,12 @@ class ContextLogoViewlet(ContextImageBase, LogoViewlet):
             self.logo_tag = image.tag(title=logoTitle, alt=logoTitle)
 
 
-class ContextFooterViewlet(ContextFooterBase):
+class ContextFooterViewlet(ContextField, ViewletBase):
     field_name = 'context_footer'
     
-    def update(self):
-        super(ContextFooterViewlet, self).update()
-        context_footer = self.aquire_footer()
-        if context_footer:
-            return context_footer
+    @property
+    def footer(self):
+        context_footer = self.aquire_field()
+        if not context_footer:
+            return 'nothing'
+        return context_footer

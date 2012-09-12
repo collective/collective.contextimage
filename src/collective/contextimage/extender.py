@@ -28,11 +28,12 @@ _ = MessageFactory('collective.contextimage')
 class XImageField(ExtensionField, ImageField):
     pass
 
+
 class FooterField(ExtensionField, TextField):
     pass
 
+
 class ExtenderBase(object):
-    
     implements(IOrderableSchemaExtender, IBrowserLayerAwareExtender)
     adapts(IBaseObject)
     
@@ -56,7 +57,6 @@ class PageContextImageExtender(ExtenderBase):
     """Schema extender for context specific images displayed as background
     image of portal.
     """
-    
     layer = IPageImageExtensionLayer
 
     fields = [
@@ -74,7 +74,6 @@ class HeaderContextImageExtender(ExtenderBase):
     """Schema extender for context specific images displayed as background
     image of portal header.
     """
-    
     layer = IHeaderImageExtensionLayer
 
     fields = [
@@ -92,7 +91,6 @@ class HeaderContextImageExtender(ExtenderBase):
 class ViewletContextImageExtender(ExtenderBase):
     """Schema extender for context specific images displayed as viewlet.
     """
-    
     layer = IViewletImageExtensionLayer
 
     fields = [
@@ -109,7 +107,6 @@ class ViewletContextImageExtender(ExtenderBase):
 class LogoContextImageExtender(ExtenderBase):
     """Schema extender for context specific images displayed as logo.
     """
-
     layer = ILogoImageExtensionLayer
 
     fields = [
@@ -126,7 +123,6 @@ class LogoContextImageExtender(ExtenderBase):
 class ContextFooterExtender(ExtenderBase):
     """Schema extender for context specific footer.
     """
-
     layer = IFooterExtensionLayer
 
     fields = [
