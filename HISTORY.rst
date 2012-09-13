@@ -2,8 +2,8 @@
 History
 =======
 
-1.1.1dev
---------
+1.1.1
+-----
 
 - Cleanup viewlets.
   [rnix]
