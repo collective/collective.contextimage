@@ -147,5 +147,5 @@ class ContextFooterViewlet(ContextField, ViewletBase):
     def footer(self):
         context_footer = self.acquire_field()
         if not context_footer:
-            return 'nothing'
+            return ''
         return context_footer
