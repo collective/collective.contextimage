@@ -2,8 +2,8 @@
 History
 =======
 
-1.2dev
-------
+1.2
+---
 
 - Context image extension feature availability is now controlled by marker
   interfaces.
