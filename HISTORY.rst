@@ -2,6 +2,13 @@
 History
 =======
 
+1.2dev
+------
+
+- Context image extension feature availability is now controlled by marker
+  interfaces.
+  [rnix]
+
 1.1.1
 -----
 

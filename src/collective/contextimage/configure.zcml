@@ -33,6 +33,17 @@
     name="collective.viewletcontextfooter"
     factory=".extender.ContextFooterExtender"
     provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender"
-  />  
+  />
+  
+  <!-- apply marker interface to context class in order to enable extending -->
+  <!--
+  <class class="Products.Archetypes.BaseObject.BaseObject">
+    <implements interface="collective.contextimage.interfaces.IPageImageExtensible" />
+    <implements interface="collective.contextimage.interfaces.IHeaderImageExtensible" />
+    <implements interface="collective.contextimage.interfaces.IViewletImageExtensible" />
+    <implements interface="collective.contextimage.interfaces.ILogoImageExtensible" />
+    <implements interface="collective.contextimage.interfaces.IFooterExtensible" />
+  </class>
+  -->
 
 </configure>

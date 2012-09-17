@@ -13,13 +13,17 @@ from Products.Archetypes.public import (
     TextField,
     RichWidget,
 )
-from Products.Archetypes.interfaces import IBaseObject
 from collective.contextimage.interfaces import (
     IPageImageExtensionLayer,
     IHeaderImageExtensionLayer,
     IViewletImageExtensionLayer,
     ILogoImageExtensionLayer,
     IFooterExtensionLayer,
+    IPageImageExtensible,
+    IHeaderImageExtensible,
+    IViewletImageExtensible,
+    ILogoImageExtensible,
+    IFooterExtensible,
 )
 
 _ = MessageFactory('collective.contextimage')
@@ -35,7 +39,6 @@ class XTextField(ExtensionField, TextField):
 
 class ExtenderBase(object):
     implements(IOrderableSchemaExtender, IBrowserLayerAwareExtender)
-    adapts(IBaseObject)
     
     def __init__(self, context):
         self.context = context
@@ -57,6 +60,7 @@ class PageContextImageExtender(ExtenderBase):
     """Schema extender for context specific images displayed as background
     image of portal.
     """
+    adapts(IPageImageExtensible)
     layer = IPageImageExtensionLayer
 
     fields = [
@@ -74,6 +78,7 @@ class HeaderContextImageExtender(ExtenderBase):
     """Schema extender for context specific images displayed as background
     image of portal header.
     """
+    adapts(IHeaderImageExtensible)
     layer = IHeaderImageExtensionLayer
 
     fields = [
@@ -91,6 +96,7 @@ class HeaderContextImageExtender(ExtenderBase):
 class ViewletContextImageExtender(ExtenderBase):
     """Schema extender for context specific images displayed as viewlet.
     """
+    adapts(IViewletImageExtensible)
     layer = IViewletImageExtensionLayer
 
     fields = [
@@ -107,6 +113,7 @@ class ViewletContextImageExtender(ExtenderBase):
 class LogoContextImageExtender(ExtenderBase):
     """Schema extender for context specific images displayed as logo.
     """
+    adapts(ILogoImageExtensible)
     layer = ILogoImageExtensionLayer
 
     fields = [
@@ -123,6 +130,7 @@ class LogoContextImageExtender(ExtenderBase):
 class ContextFooterExtender(ExtenderBase):
     """Schema extender for context specific footer.
     """
+    adapts(IFooterExtensible)
     layer = IFooterExtensionLayer
 
     fields = [

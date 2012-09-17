@@ -49,11 +49,24 @@ Install it as an addon in Plone control-panel or portal_setup.
 
 This package is written for Plone 4.1 or later.
 
-Each of this features can be activated by importing the refering GenericSetup
-profile.
+You need to enable context image extending by applying marker interfaces via
+ZCML. I.e., if all extensions should be potentially available to all
+``Products.Archetypes.BaseObject.BaseObject`` deriving types, add following in
+your ``configure.zcml``::
 
-If i.e. page background and header image support desired, add
-following to integration GS profile metadata.xml::
+    <class class="Products.Archetypes.BaseObject.BaseObject">
+      <implements interface="collective.contextimage.interfaces.IPageImageExtensible" />
+      <implements interface="collective.contextimage.interfaces.IHeaderImageExtensible" />
+      <implements interface="collective.contextimage.interfaces.IViewletImageExtensible" />
+      <implements interface="collective.contextimage.interfaces.ILogoImageExtensible" />
+      <implements interface="collective.contextimage.interfaces.IFooterExtensible" />
+    </class>
+
+Each of the features can be activated now by importing the refering
+GenericSetup profile.
+
+If i.e. page background and header image support is desired, add
+following to integration GS profile ``metadata.xml``::
 
     <?xml version="1.0"?>
     <metadata>
@@ -63,7 +76,6 @@ following to integration GS profile metadata.xml::
         <dependency>profile-collective.contextimage:header</dependency>
       </dependencies> 
     </metadata>
-
 
 You can also install the profiles by going to /portal_setup.
 
