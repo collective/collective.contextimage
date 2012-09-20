@@ -1,3 +1,3 @@
-<div class="contextfooter">
+<div class="contextfooter" tal:condition=" view/footer">
    <tal:footer replace="structure view/footer" />
 </div>
