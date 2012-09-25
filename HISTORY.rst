@@ -2,6 +2,12 @@
 History
 =======
 
+1.2.1
+-----
+
+- Display condition for footer.
+  [espen]
+
 1.2
 ---
 
