@@ -5,6 +5,31 @@
   <include file="profiles.zcml" />
   <include package=".browser" />
   
+  <permission
+    id="collective.contextimage.EditPageContextImage"
+    title="Contextimage: Edit page context image"
+  />
+  
+  <permission
+    id="collective.contextimage.EditHeaderContextImage"
+    title="Contextimage: Edit header context image"
+  />
+  
+  <permission
+    id="collective.contextimage.EditViewletContextImage"
+    title="Contextimage: Edit viewlet context image"
+  />
+  
+  <permission
+    id="collective.contextimage.EditLogoContextImage"
+    title="Contextimage: Edit logo context image"
+  />
+  
+  <permission
+    id="collective.contextimage.EditContextFooter"
+    title="Contextimage: Edit context footer"
+  />
+  
   <adapter
     name="collective.pagecontextimage"
     factory=".extender.PageContextImageExtender"

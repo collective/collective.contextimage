@@ -2,6 +2,13 @@
 History
 =======
 
+1.3
+---
+
+- Add permissions for each schema extender and make extension fields editable
+  for Managers and Site Administrators.
+  [rnix]
+
 1.2.1
 -----
 

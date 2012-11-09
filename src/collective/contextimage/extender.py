@@ -69,7 +69,8 @@ class PageContextImageExtender(ExtenderBase):
             schemata='settings',
             widget=ImageWidget(
                 label=_(u'label_page_context_image', u'Page Background Image'),
-            )
+            ),
+            write_permission='Contextimage: Edit page context image',
         ),
     ]
 
@@ -88,7 +89,8 @@ class HeaderContextImageExtender(ExtenderBase):
             widget=ImageWidget(
                 label=_(u'label_header_context_image',
                         u'Header Background Image'),
-            )
+            ),
+            write_permission='Contextimage: Edit header context image',
         ),
     ]
 
@@ -105,7 +107,8 @@ class ViewletContextImageExtender(ExtenderBase):
             schemata='settings',
             widget=ImageWidget(
                 label=_(u'label_viewlet_context_image', u'Viewlet Image'),
-            )
+            ),
+            write_permission='Contextimage: Edit viewlet context image',
         ),
     ]
 
@@ -122,7 +125,8 @@ class LogoContextImageExtender(ExtenderBase):
             schemata='settings',
             widget=ImageWidget(
                 label=_(u'label_viewlet_logo_image', u'Logo Image'),
-            )
+            ),
+            write_permission='Contextimage: Edit logo context image',
         ),
     ]
 
@@ -140,6 +144,7 @@ class ContextFooterExtender(ExtenderBase):
             schemata='settings',
             widget=RichWidget(
                 label=_(u'label_viewlet_footer', u'Footer'),
-            )
+            ),
+            write_permission='Contextimage: Edit context footer',
         ),
     ]
