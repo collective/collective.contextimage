@@ -2,6 +2,16 @@
 History
 =======
 
+1.3.1
+-----
+
+- Use ``zope.interface.implementer`` and ``zope.component.adapter`` instead of
+  ``zope.interface.implements`` and ``zope.component.adapts``.
+  [rnix]
+
+- Return original order in base extender.
+  [rnix]
+
 1.3
 ---
 

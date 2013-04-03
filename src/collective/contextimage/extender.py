@@ -1,5 +1,5 @@
-from zope.interface import implements
-from zope.component import adapts
+from zope.interface import implementer
+from zope.component import adapter
 from zope.i18nmessageid import MessageFactory
 from archetypes.schemaextender.interfaces import (
     IOrderableSchemaExtender,
@@ -29,16 +29,12 @@ from collective.contextimage.interfaces import (
 _ = MessageFactory('collective.contextimage')
 
 
-class XImageField(ExtensionField, ImageField):
-    pass
+class XImageField(ExtensionField, ImageField): pass
+class XTextField(ExtensionField, TextField): pass
 
 
-class XTextField(ExtensionField, TextField):
-    pass
-
-
+@implementer(IOrderableSchemaExtender, IBrowserLayerAwareExtender)
 class ExtenderBase(object):
-    implements(IOrderableSchemaExtender, IBrowserLayerAwareExtender)
     
     def __init__(self, context):
         self.context = context
@@ -46,21 +42,15 @@ class ExtenderBase(object):
     def getFields(self):
         return self.fields
     
-    def getOrder(self, original):
-        neworder = OrderedDict()
-        keys = original.keys()
-        last = keys.pop()
-        keys.insert(1, last)
-        for schemata in keys:
-            neworder[schemata] = original[schemata]
-        return neworder
+    def getOrder(self, order):
+        return order
 
 
+@adapter(IPageImageExtensible)
 class PageContextImageExtender(ExtenderBase):
     """Schema extender for context specific images displayed as background
     image of portal.
     """
-    adapts(IPageImageExtensible)
     layer = IPageImageExtensionLayer
 
     fields = [
@@ -75,11 +65,11 @@ class PageContextImageExtender(ExtenderBase):
     ]
 
 
+@adapter(IHeaderImageExtensible)
 class HeaderContextImageExtender(ExtenderBase):
     """Schema extender for context specific images displayed as background
     image of portal header.
     """
-    adapts(IHeaderImageExtensible)
     layer = IHeaderImageExtensionLayer
 
     fields = [
@@ -95,10 +85,10 @@ class HeaderContextImageExtender(ExtenderBase):
     ]
 
 
+@adapter(IViewletImageExtensible)
 class ViewletContextImageExtender(ExtenderBase):
     """Schema extender for context specific images displayed as viewlet.
     """
-    adapts(IViewletImageExtensible)
     layer = IViewletImageExtensionLayer
 
     fields = [
@@ -113,10 +103,10 @@ class ViewletContextImageExtender(ExtenderBase):
     ]
 
 
+@adapter(ILogoImageExtensible)
 class LogoContextImageExtender(ExtenderBase):
     """Schema extender for context specific images displayed as logo.
     """
-    adapts(ILogoImageExtensible)
     layer = ILogoImageExtensionLayer
 
     fields = [
@@ -131,10 +121,10 @@ class LogoContextImageExtender(ExtenderBase):
     ]
 
 
+@adapter(IFooterExtensible)
 class ContextFooterExtender(ExtenderBase):
     """Schema extender for context specific footer.
     """
-    adapts(IFooterExtensible)
     layer = IFooterExtensionLayer
 
     fields = [
