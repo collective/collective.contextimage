@@ -2,7 +2,7 @@
 History
 =======
 
-1.3.2 (unreleased)
+1.3.2 (2015-05-29)
 ------------------
 
 - deliver default image resources always relative to navigation url
