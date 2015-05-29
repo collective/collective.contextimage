@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = "1.3.1"
+version = "1.3.2.dev0"
 shortdesc = ('Context sensitive images and markup from extended plone content '
              'as viewlet, header, logo, footer, ...')
 longdesc = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
@@ -21,6 +21,7 @@ setup(name='collective.contextimage',
             "Framework :: Plone",
             "Framework :: Plone :: 4.1",
             "Framework :: Plone :: 4.2",
+            "Framework :: Plone :: 4.3",
       ],
       keywords='web zope plone theme viewlet logo header',
       author='BlueDynamics Alliance',
