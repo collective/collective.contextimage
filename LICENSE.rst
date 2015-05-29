@@ -3,7 +3,7 @@
 License
 =======
 
-Copyright (c) 2011, BlueDynamics Alliance, Austria, Switzerland, Germany
+Copyright (c) 2011-2015, BlueDynamics Alliance, Austria, Switzerland, Germany
 
 GNU GENERAL PUBLIC LICENSE 
 

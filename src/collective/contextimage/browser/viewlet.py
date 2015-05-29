@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-import logging
-from plone.app.layout.viewlets.common import (
-    ViewletBase,
-    LogoViewlet,
-)
+from Acquisition import aq_inner
+from Acquisition import aq_parent
 from Products.CMFPlone.interfaces import IPloneSiteRoot
-from Acquisition import aq_inner, aq_parent
+from plone.app.layout.viewlets.common import LogoViewlet
+from plone.app.layout.viewlets.common import ViewletBase
+from plone.app.layout.navigation.root import getNavigationRoot
+import logging
 
 logger = logging.getLogger('collective.contextimage')
 
@@ -14,14 +14,14 @@ class ContextField(object):
     """Abstract Base for context field acquiring.
     """
     field_name = None
-    
+
     def acquire_field(self):
         obj = aq_inner(self.context)
         field = None
         while not IPloneSiteRoot.providedBy(obj):
             try:
                 field = obj.getField(self.field_name)
-            except AttributeError, e:
+            except AttributeError:
                 return
             if field is None:
                 obj = aq_parent(aq_inner(obj))
@@ -43,8 +43,7 @@ class ContextImageBase(ContextField):
     def imageurl(self):
         image = self.acquire_field()
         if not image:
-            return '%s/%s' % (self.context.absolute_url(),
-                              self.default_imageurl)
+            return self.default_imageurl
         return image.absolute_url()
 
 
@@ -56,6 +55,10 @@ class ImageViewlet(ContextImageBase, ViewletBase):
 class CSSViewlet(ImageViewlet):
     default_css_template = None
     media = 'all'
+
+    def resource_url(self, urlpath):
+        nav_root = getNavigationRoot(self.context)
+        return '{0:s}/{1:s}'.format(nav_root, urlpath)
 
     @property
     def css(self):
@@ -76,7 +79,8 @@ html {
 }
 """
 
-PAGE_DEFAULT_IMAGE = '++resource++collective.contextimage.images/default_page.png'
+PAGE_DEFAULT_IMAGE = '++resource++collective.contextimage.images/' \
+                     'default_page.png'
 
 
 class PageImageViewlet(CSSViewlet):
@@ -84,7 +88,7 @@ class PageImageViewlet(CSSViewlet):
 
     @property
     def default_imageurl(self):
-        return PAGE_DEFAULT_IMAGE
+        return self.resource_url(PAGE_DEFAULT_IMAGE)
 
     @property
     def default_css_template(self):
@@ -105,7 +109,7 @@ class HeaderImageViewlet(CSSViewlet):
 
     @property
     def default_imageurl(self):
-        return HEADER_DEFAULT_IMAGE
+        return self.resource_url(HEADER_DEFAULT_IMAGE)
 
     @property
     def default_css_template(self):
@@ -142,7 +146,7 @@ class ContextLogoViewlet(ContextImageBase, LogoViewlet):
 
 class ContextFooterViewlet(ContextField, ViewletBase):
     field_name = 'context_footer'
-    
+
     @property
     def footer(self):
         context_footer = self.acquire_field()

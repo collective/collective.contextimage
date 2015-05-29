@@ -2,6 +2,12 @@
 History
 =======
 
+1.3.2
+-----
+
+- deliver default image resources always relative to navigation url
+  [jensens]
+
 1.3.1
 -----
 
